@@ -1,0 +1,33 @@
+<%- layout('layout/boilerplate') %>
+<div class="container row">
+  <div class="col-lg-6">
+    <div class="card m-3" style="width: 20rem">
+      <img src="<%= product.imageUrl %>" class="card-img-top" style="max-height: 200px"/>
+      <div class="card-body m-auto">
+        <p class="card-text"><%= product.price %></p>
+        <h5 class="card-title"><%= product.productName %></h5>
+        <p class="card-text"><%= product.description %></p>
+        <a href="" class="btn btn-success btn-sm">Buy now</a>
+        <form class="d-inline" action="/user/cart/<%= product._id %>" method="post">
+          <button class="btn btn-primary btn-sm">Add to cart</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-6">
+        <h2 class="text-center">Reviews</h2>
+        <form action="/product/review/<%= product._id %>" method="post">
+          <input class="form-control mb-2" type="range" name="rating" value="0" min="0" max="5" step="1">
+          <textarea class="form-control mb-2" name="comment" rows="4" placeholder="Comment..."></textarea>
+          <button class="btn btn-primary">Add review</button>
+        </form>
+
+        <% for (let review of product.reviews) { %>
+            <div class="container border rounded mt-2">
+              <p><%= review.rating %></p>
+              <p><%= review.comment %></p>
+            </div>
+        <% } %> 
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<%- layout('layout/boilerplate') %>
+
+<div class="container">
+  <h2>My products</h2>
+</div>
+<div class="container d-flex flex-wrap">
+  <% adminProducts.forEach(product => { %>
+  <div class="card m-3" style="width: 18rem">
+    <img src="<%= product.imageUrl %>" class="card-img-top" style="max-height: 200px"/>
+    <div class="card-body">
+      <p class="card-text"><%= product.price %></p>
+      <h5 class="card-title"><%= product.productName %></h5>
+      <p class="card-text"><%= product.description %></p>
+      <% if(role == "seller") {%>
+        <a href="/product/edit/<%= product._id %>" class="btn btn-secondary btn-sm">Edit</a>
+        <form class="d-inline" action="/product/delete/<%= product._id %>?_method=Delete" method="post">
+          <button class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+  <% }); %>
+</div>

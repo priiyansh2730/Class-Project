@@ -1,0 +1,20 @@
+<%- layout('layout/boilerplate') %>
+<div class="container">
+    <form  action="/product/new" method="post">
+        <div class="mb-3">
+        <label class="form-label" for="">Product name: </label>
+        <input class="form-control" type="text" name="productName">
+        </div>
+        <div class="mb-3">
+        <label class="form-label" for="">Product price: </label>
+        <input class="form-control" type="number" name="price">
+        </div>
+        <label class="form-label" for="">Product description: </label>
+        <input class="form-control" type="text" name="description">
+        <div class="mb-3">
+        <label class="form-label" for="">Product image url: </label>
+        <input class="form-control" type="text" name="imageUrl">
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+</div>
